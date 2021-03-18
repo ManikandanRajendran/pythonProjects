@@ -2,6 +2,8 @@ import pprint
 import speech_recognition as sr
 import wikipedia
 import pyttsx3
+import sys
+sys.path.insert(1, 'webScrap')
 import scrapeGoogleSearch
 
 engine = pyttsx3.init()
@@ -18,15 +20,14 @@ def saySomething(text):
 
 def recordQuery():
     with sr.Microphone() as source:
-        print('clearing background noise.. please wait!')
+        print('\n \n clearing background noise.. please wait! \n')
         recognizer.adjust_for_ambient_noise(source, duration=1)
-        print('Shoot your question now!')
+        print('Shoot your question now! \n')
         record_audio = recognizer.listen(source)
-        print("Done recording")
+        print("Done recording \n")
     try:
-        print("printing your message")
         text = recognizer.recognize_google(record_audio, language='en-US')
-        print('Your query is : {}', format(text))
+        print(f'Searching with your query : {text} \n')
         return text
     except Exception as ex:
         print(ex)
@@ -43,20 +44,29 @@ def search_in_wiki(query):
 
 def read_result(result):
     pprint.pprint(result)
+    print('\n \n')
     saySomething(result)
 
 
-if __name__ == '__main__':
-    query = recordQuery()
-    if not query == "":
-        result = scrapeGoogleSearch.scrape_google_result(query)
-        read_result(result)
-        links = scrapeGoogleSearch.scrape_google_links(query)
-        if len(links) > 0:
-            saySomething("please refer below links for more info")
-            pprint.pprint(links)
-    else:
-        saySomething('Sorry, facing issue with listening you')
+def initiateProgram():
+    try:
+        query = recordQuery()
+        if not query == "":
+            result = scrapeGoogleSearch.scrape_google_result(query)
+            read_result(result)
+            links = scrapeGoogleSearch.scrape_google_links(query)
+            if len(links) > 0:
+                saySomething("please refer below links for more info \n")
+                print('\n Below links will be helpful \n') 
+                pprint.pprint(links)
+        else:
+            saySomething('Sorry, facing issue with listening you')        
+        engine.runAndWait()
+    except Exception as ex:
+        print(ex)
 
-    engine.runAndWait()
+
+
+if __name__ == '__main__':
+    initiateProgram()
 
