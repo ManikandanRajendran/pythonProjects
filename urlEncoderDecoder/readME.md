@@ -1,6 +1,6 @@
-#Encoder & Decoder
+# Encoder & Decoder
 
-##This is a desktop application using tkinter to encode and decode the urls.
+## This is a desktop application using tkinter to encode and decode the urls.
 
 **Packages used**
 1. Tkinter
