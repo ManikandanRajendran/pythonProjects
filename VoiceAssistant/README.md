@@ -19,6 +19,7 @@ Steps:
 3. shoot your query
 4. you will get the answere (both audio and text format) with website links for reference
 
+
 ## Output
 
 ![Alt text](voiceAssistant.png?raw=true "result")
