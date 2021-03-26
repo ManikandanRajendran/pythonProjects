@@ -1,0 +1,4 @@
+clipboard==0.0.4
+Pillow==8.1.2
+pkg-resources==0.0.0
+pyperclip==1.8.2
