@@ -13,12 +13,12 @@
 5. `BeautifulSoup` - for web scraping
 
 Steps:
-
+```
 1. Clone this repository and install the libraries
 2. Run main.py
 3. shoot your query
 4. you will get the answere (both audio and text format) with website links for reference
-
+```
 
 ## Output
 
