@@ -2,7 +2,7 @@
 
 ## you can refer useful python projects here
 
-> This program is basically a **_voice assistant** created using **_python_** libraries and **_web scraping_** technology.
+> This program is basically a **_voice assistant_** created using **_python_** libraries and **_web scraping_** technology.
 
 `Libraries` used,
 
