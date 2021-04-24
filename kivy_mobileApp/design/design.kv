@@ -1,0 +1,160 @@
+<FirstPage>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/bg1.png'
+    GridLayout:
+        cols:1
+        padding: 15, 15
+        spacing: 20, 20
+        Label:
+            text:"Hey buddy, how can I help you?"
+            font_size:'20sp'
+        Button:
+            size_hint: 0.2, 0.2
+            text:"Do you want Joke?"
+            on_release:root.result_page("joke")
+        Button:
+            size_hint: 0.2, 0.2
+            text:"Do you want a nice quote?"
+            on_release:root.result_page("quote")
+        Button:
+            size_hint: 0.2, 0.2
+            text:"Find synonyms"
+            on_release:root.synonym_page()
+<ResultScreen>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/bg1.png'
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:1
+            padding: 20, 20
+            spacing: 20, 20
+            Label:
+                text:root.labelText
+                text_size: self.width, None
+                font_size:'25sp'
+        GridLayout:
+            cols:1
+            padding: 15, 15
+            spacing: 20, 20
+            Button:
+                text:"one more"
+                on_press:root.again()
+            Button:
+                text:"Home"
+                on_press:root.home()
+            Button:
+                text:"Close"
+                on_press:root.close_app()
+<FindSynonyms>
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/bg1.png'
+    GridLayout:
+        cols:1
+        padding: 15, 15
+        spacing: 20, 20
+        GridLayout:
+            padding: 15, 15
+            spacing: 20, 20
+            cols:1
+            GridLayout:
+                padding: 15, 15
+                spacing: 20, 20
+                cols:2
+                RelativeLayout:
+                    Button:
+                        text: "Home"
+                        on_press: root.home()
+                        size_hint: 0.4, 1.0
+                RelativeLayout:
+                    Button:
+                        text:"exit"
+                        size_hint: 0.4, 1.0
+                        on_press: root.close_app()
+                        pos_hint: {"center_x":0.9, "center_y":0.6}
+            GridLayout:
+                padding: 15, 15
+                spacing: 20, 20
+                cols:2
+                TextInput:
+                    id: searchWord
+                    hint_text: "Enter the word"
+                    multiline: False
+                Button:
+                    text: "Search"
+                    on_press: root.get_synonym(root.ids.searchWord.text)
+            GridLayout:
+                padding: 15, 15
+                spacing: 20, 20
+                cols: 1
+                RelativeLayout:
+                    Button:
+                        text:"clear"
+                        on_release:root.clear_input([root.ids.searchWord, root.ids.description, root.ids.example, root.ids.synonym, root.ids.searchWord])
+                        size_hint: 0.2, 1.0
+                        pos_hint: {"center_x":0.5, "center_y":0.6}
+        GridLayout:
+            cols:1
+            GridLayout:
+                cols:1
+                padding: 15, 15
+                spacing: 20, 20
+                Label:
+                    id: description
+                    text: root.definition
+                    text_size: self.width, None
+                    font_size:'18sp'
+#                    size_hint: 1, None
+#                    height: self.texture_size[1]
+#                    text_size: self.size
+                Label:
+                    id: example
+                    text: root.example
+                    text_size: self.width, None
+                    font_size:'18sp'
+#                    size_hint: 1, None
+#                    height: self.texture_size[1]
+#                    text_size: self.size
+                Label:
+                    id: synonym
+                    text: root.synonym_words
+                    text_size: self.width, None
+                    font_size:'18sp'
+#                    size_hint: 1, None
+#                    height: self.texture_size[1]
+#                    text_size: self.size
+
+
+
+<RootWidget>:
+    FirstPage:
+        name:"home_page"
+    ResultScreen:
+        name:"Result"
+    FindSynonyms:
+        name: "synonym"
+
+
+
+
+
+    #                    background_normal: str(False)
+    #                    canvas:
+    #                        Rectangle:
+    #                        # sets size, pos of the image
+    #                            size: 50, 50
+    #                            pos: self.pos[0] + (self.width + 100 )/2, self.pos[1] + self.height - 65
+    #                            source: 'close1.png'
+    #
+    #                    halign: 'center'
+    #                    size_hint_y: None
+    #                    height: 50 + 30 , root.ids.description_lbl, root.ids.example_lbl, root.ids.synonym_lbl
