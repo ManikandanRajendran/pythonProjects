@@ -6,7 +6,7 @@
 
 `Libraries` used,
 
-1. `Kivy` - To listen the voice and convert to text
+1. `Kivy` - To design the UI
 2. `pyttsx3` - text-to-speech conversion
 3. `request` - to fetch the request from page
 
